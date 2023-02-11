@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useMemo } from "react";
+import "./App.css";
+import { formatDataSet, getTotal } from "./utils";
+import dataSet from "./EmployeeDataset.json";
+import Table from "./components/react-table/Table";
 
 function App() {
+  const tableData = useMemo(() => {
+    return formatDataSet(dataSet);
+  }, []);
+
+  const tableColumn = [
+    {
+      Header: "Location",
+      accessor: "location",
+      Footer: "Total",
+    },
+    {
+      Header: "Salary",
+      accessor: "salary",
+      Cell: (props) => (
+        <span className="number">${props?.value?.toLocaleString("en-US")}</span>
+      ),
+      Footer: () => <span className="number">${getTotal(tableData)}</span>,
+    },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Table column={tableColumn} data={tableData} />
     </div>
   );
 }
