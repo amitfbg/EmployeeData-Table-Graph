@@ -20,7 +20,12 @@ function formatDataSet(data) {
 }
 
 function getTotal(data) {
-  return data?.reduce((acc, curr) => +(+(acc + curr?.salary) / 2).toFixed(2), 0);
+  if (data && Array.isArray(data) && data.length)
+    return +(
+      data.reduce((acc, curr) => +(acc + curr?.salary).toFixed(2), 0) /
+      data.length
+    ).toFixed(2);
+  return 0;
 }
 
 export { formatDataSet, getTotal };
