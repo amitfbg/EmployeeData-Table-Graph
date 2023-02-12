@@ -6,7 +6,7 @@ import TabList from "@mui/lab/TabList";
 
 function TabBar({ selectedTab, handleTabChange, tabOptions }) {
   return (
-    <Box sx={{ width: "100%", typography: "body1" }}>
+    <Box sx={{ padding: "1rem" }}>
       <TabContext value={selectedTab}>
         <Box>
           <TabList onChange={handleTabChange}>

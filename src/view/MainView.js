@@ -8,6 +8,7 @@ import dataSet from "../EmployeeDataset.json";
 import BarGraph from "../components/bar-graph/BarGraph";
 
 const Container = styled.div`
+  height: 100%;
   padding: 2rem;
 `;
 
@@ -24,9 +25,12 @@ const TabAndSearchContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 1rem 0;
+  flex-wrap: wrap;
 `;
 const ContainerBody = styled.div`
   margin: 1rem 0;
+  width: 100%;
+  height: calc(100vh - 10rem);
 `;
 
 const tabOptions = [
@@ -54,7 +58,7 @@ function MainView() {
     {
       Header: "Salary",
       accessor: "salary",
-      Cell: (props) => '$' + props?.value?.toLocaleString("en-US"),
+      Cell: (props) => "$" + props?.value?.toLocaleString("en-US"),
       Footer: () => <span>${getTotal(filteredList)}</span>,
     },
   ];
