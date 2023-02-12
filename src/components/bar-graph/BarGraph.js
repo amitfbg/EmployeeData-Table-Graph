@@ -1,5 +1,5 @@
 import React from "react";
-import { BarChart, Bar, XAxis, YAxis, Legend } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Label } from "recharts";
 
 function BarGraph({ data }) {
   console.log(data);
@@ -12,12 +12,13 @@ function BarGraph({ data }) {
         top: 50,
         right: 30,
         left: 50,
-        bottom: 5,
+        bottom: 30,
       }}
     >
-      <XAxis dataKey="location" />
+      <XAxis dataKey="location">
+        <Label value="Location" offset={-10} position="insideBottom" />
+      </XAxis>
       <YAxis />
-      <Legend />
       <Bar dataKey="salary" fill="#8884d8" />
     </BarChart>
   );

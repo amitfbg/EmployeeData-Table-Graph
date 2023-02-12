@@ -54,8 +54,8 @@ function MainView() {
     {
       Header: "Salary",
       accessor: "salary",
-      Cell: (props) => props?.value?.toLocaleString("en-US"),
-      Footer: () => <span className="number">${getTotal(filteredList)}</span>,
+      Cell: (props) => '$' + props?.value?.toLocaleString("en-US"),
+      Footer: () => <span>${getTotal(filteredList)}</span>,
     },
   ];
 
